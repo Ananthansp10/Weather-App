@@ -1,3 +1,8 @@
+This is a simple Weather App created with ReactJS and Weather API.This is website is responsive according to the devices.
+
+This Website Can Be Viewed On :- https://ananthansp-weather-app.netlify.app
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
