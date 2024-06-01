@@ -1,4 +1,4 @@
-This is a simple Weather App created with ReactJS and Weather API.This is website is responsive according to the devices.
+This is a simple Weather App created with ReactJS and Weather API.This website is responsive according to the devices.
 
 This Website Can Be Viewed On :- https://ananthansp-weather-app.netlify.app
 
