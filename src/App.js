@@ -1,17 +1,32 @@
 import { useState } from 'react';
 import axios from 'axios'
 import './App.css';
+import Weatherlist from './Component/Weatherlist';
 
 function App() {
 
   const [search,setSearch]=useState('');
-  const [data,setData]=useState([]);
+  const [data,setData]=useState({});
+  const [list,setList]=useState([])
 
   function getdetails(){
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
     axios.get(url).then((response)=>{
       console.log(response.data)
-      setData(response.data)
+      const {lat,lon}=response.data.coord
+      setData(response.data);
+      getforecastdetails(lat,lon);
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+   function getforecastdetails(lat,lon){
+    let forecasturl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&appid=${process.env.REACT_APP_API_KEY}`
+    axios.get(forecasturl).then((response)=>{
+      console.log(response.data)
+      setList(response.data.list)
+    }).catch((error)=>{
+      console.log(error)
     })
     setSearch('')
   }
@@ -47,9 +62,10 @@ function App() {
             <p className='bold'>Wind Speed</p>
           </div> 
         </div>:null}
+        <Weatherlist data={list}/>
       </div>
     </div>
   );
-}
+  }
 
 export default App;
